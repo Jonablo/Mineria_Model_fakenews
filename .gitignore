@@ -1,0 +1,51 @@
+# Entorno virtual
+.venv/
+venv/
+env/
+
+# Cachés de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Paquetes instalados
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distintos archivos de build/distribución
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs
+*.log
+
+# Archivos de datos y modelos (CSV, PKL, HDF5, joblib…)
+datos/
+*.csv
+*.pkl
+*.h5
+*.joblib
+
+# Carpetas de vectores/modelos
+rrnvectores/
+vectores/
+
+# Resultados temporales de entrenamiento
+results/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
+
+# JetBrains IDEs (PyCharm, etc.)
+.idea/
+
+# Archivos de sistema
+.DS_Store
+
+# Entornos de contenedor (Docker, devcontainer)
+.devcontainer/
