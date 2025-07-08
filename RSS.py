@@ -63,4 +63,3 @@ df_noticias = pd.DataFrame(noticias)
 print(f"Total noticias recolectadas: {len(df_noticias)}")
 
 df_noticias.to_csv("datos/noticias_rss_espanol.csv", index=False, encoding='utf-8')
-print("Noticias limpias guardadas en noticias_rss_espanol.csv")

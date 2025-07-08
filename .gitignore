@@ -3,10 +3,19 @@
 venv/
 env/
 
+# variables
+.env
+
 # Cachés de Python
-__pycache__/
+/__pycache__
 *.py[cod]
 *$py.class
+
+#archivos en prueba.
+/rrnvectores
+/frontend
+/data
+/metastore_db
 
 # Paquetes instalados
 pip-log.txt
@@ -47,5 +56,8 @@ results/
 # Archivos de sistema
 .DS_Store
 
-# Entornos de contenedor (Docker, devcontainer)
+# Entornos de contenedor
 .devcontainer/
+
+# Node modules
+node_modules/

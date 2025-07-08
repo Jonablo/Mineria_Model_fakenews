@@ -14,7 +14,7 @@ spanish_stopwords = stopwords.words('spanish')
 # Cargar datos
 df_train = pd.read_csv("datos/train.csv")
 df_fakes = pd.read_csv("datos/onlyfakes1000.csv")
-df_true = pd.read_csv("noticias_rss_espanol.csv")
+df_true = pd.read_csv("datos/onlytrue1000.csv")
 
 # Asignar etiquetas a datasets sin label
 df_fakes['label'] = 1

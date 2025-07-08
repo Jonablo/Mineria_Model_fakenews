@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detector de Noticias Falsas</title>
+
+  <!-- TailwindCSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-start justify-center py-12">
+  <div class="w-full max-w-2xl px-4">
+    
+    <!-- Header -->
+    <h1 class="text-5xl font-extrabold text-center text-gray-800 mb-12">
+      Detector de Noticias Falsas
+    </h1>
+
+    <!-- Formulario -->
+    <form action="/predict" method="post" class="bg-white rounded-xl shadow-lg p-6 mb-8">
+      <label for="text" class="block text-gray-700 font-medium mb-2">
+        Escribe la noticia aquí:
+      </label>
+      <textarea
+        id="text"
+        name="text"
+        required
+        rows="6"
+        class="w-full p-3 border border-gray-300 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+        placeholder="Un titular muy sorprendente..."
+      ></textarea>
+      <div class="text-right">
+        <button
+          type="submit"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition"
+        >
+          Evaluar
+        </button>
+      </div>
+    </form>
+
+    <!-- Resultado -->
+    <% if (result) { %>
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <% if (result.error) { %>
+          <p class="text-red-600 font-medium">
+            <%= result.error %>
+          </p>
+        <% } else { %>
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Predicción:</h2>
+            <span class="px-4 py-2 rounded-full text-white 
+                         <%= result.prediction === 0 ? 'bg-green-500' : 'bg-red-500' %>">
+              <%= result.prediction === 0 ? 'Verdadera' : 'Falsa' %>
+            </span>
+          </div>
+
+          <!-- Canvas con data-attributes -->
+          <canvas
+            id="pieChart"
+            data-true="<%= (result.probabilities[0]*100).toFixed(1) %>"
+            data-false="<%= (result.probabilities[1]*100).toFixed(1) %>"
+            class="mx-auto"
+          ></canvas>
+        <% } %>
+      </div>
+    <% } %>
+
+  </div>
+
+  <!-- Chart.js + plugin de DataLabels -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+  <% if (result && !result.error) { %>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas   = document.getElementById('pieChart');
+      const truePct  = parseFloat(canvas.dataset.true);
+      const falsePct = parseFloat(canvas.dataset.false);
+
+      new Chart(canvas.getContext('2d'), {
+        type: 'pie',
+        data: {
+          labels: ['Verdadera', 'Falsa'],
+          datasets: [{
+            data: [truePct, falsePct],
+            backgroundColor: ['#10B981', '#EF4444']
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'bottom', labels: { padding: 20 } },
+            datalabels: {
+              color: '#ffffff',
+              formatter: v => v + '%',
+              font: { weight: 'bold', size: 14 }
+            },
+            tooltip: {
+              callbacks: {
+                label: ctx => `${ctx.label}: ${ctx.parsed}%`
+              }
+            }
+          }
+        },
+        plugins: [ChartDataLabels]
+      });
+    });
+  </script>
+  <% } %>
+</body>
+</html>

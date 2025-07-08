@@ -1,13 +1,13 @@
 import joblib
 
 # Cargar modelo y vectorizador guardados
-model = joblib.load('svm_model.pkl')
+model = joblib.load('svm_balanced_calibrated.pkl')
 vectorizer = joblib.load('tfidf_vectorizer.pkl')
 
 # Ejemplo de textos para predecir
 nuevos_textos = [
-    "En un evento realizado hoy en Quito, el Ministerio de Transporte y Obras Públicas anunció un plan de inversión sin precedentes de 1.2 mil millones de dólares destinado a la rehabilitación y construcción de carreteras y puentes en todo el territorio nacional.",
-    "México rechaza vinculación con supuestos actos delictivos en Ecuador",
+    "Consejo Nacional Electoral se aprestan a quitar la multa solo en recintos donde Noboa perdió por más de 10 puntos, denuncia @ecuarauz, tras pedido del Gobierno de no multar a personas que no vayan a votar.",
+    "Según el articulo 127 del Código de la Democracia, un acta que no tiene firmas conjuntas de Presidente y Secretario de la Junta, no tiene validez.",
     "Por el caso Narcotentáculos, el Consejo de la Judicatura suspendió a cinco funcionarios judiciales de Manabí, cuyos domicilios y oficinas fueron allanados."
 ]
 
