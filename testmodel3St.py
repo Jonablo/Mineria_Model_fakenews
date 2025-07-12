@@ -3,14 +3,14 @@ import joblib
 import numpy as np
 
 # Carga de modelos y parámetros
-model      = joblib.load('vectores/svm_fallback_model.pkl')
-vectorizer = joblib.load('vectores/tfidf_fallback_vectorizer.pkl')
+model      = joblib.load('svm_fallback_model.pkl')
+vectorizer = joblib.load('tfidf_fallback_vectorizer.pkl')
 
 # Intentamos cargar el umbral óptimo (mejor F1)
 try:
-    best_thr = joblib.load('vectores/best_thr.pkl')
+    best_thr = joblib.load('best_thr.pkl')
 except FileNotFoundError:
-    # Valor por defecto si no existe el fichero (reemplaza si guardas otro nombre)
+    # Valor por defecto si no existe el fichero
     best_thr = 0.5
 
 st.title("Detector de Noticias Falsas")

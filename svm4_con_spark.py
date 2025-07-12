@@ -20,11 +20,11 @@ nltk.download("stopwords")
 spanish_stopwords = stopwords.words("spanish")
 
 # 2) Spark: lee tu Parquet y etiqueta TODO con 0
-PARQUET_PATH = "./data/noticias_rss_parquet"
+PARQUET_PATH = "/workspaces/Mineria_Model_fakenews/data/noticias_rss_parquet"
 def create_spark_session():
     return SparkSession.builder \
         .appName("LoadRSSParquet") \
-        .config("spark.sql.warehouse.dir", "./data/spark-warehouse") \
+        .config("spark.sql.warehouse.dir", "/workspaces/Mineria_Model_fakenews/data/spark-warehouse") \
         .getOrCreate()
 
 def load_spark_data(parquet_path: str) -> pd.DataFrame:
@@ -39,10 +39,10 @@ def load_spark_data(parquet_path: str) -> pd.DataFrame:
 # 3) Carga tus CSVs de entrenamiento
 def load_csv_data():
     # tu CSV de train original, con su columna label
-    df_train = pd.read_csv("datos/train.csv")[["text","label"]]
+    df_train = pd.read_csv("/workspaces/Mineria_Model_fakenews/datos/train.csv")[["text","label"]]
     # solo "fakes" y solo "true"
-    df_fakes = pd.read_csv("datos/onlyfakes1000.csv")[["text"]]
-    df_true  = pd.read_csv("datos/onlytrue1000.csv")[["text"]]
+    df_fakes = pd.read_csv("/workspaces/Mineria_Model_fakenews/datos/onlyfakes1000.csv")[["text"]]
+    df_true  = pd.read_csv("/workspaces/Mineria_Model_fakenews/datos/onlytrue1000.csv")[["text"]]
     df_fakes["label"] = 1
     df_true ["label"] = 0
     return df_train, df_fakes, df_true

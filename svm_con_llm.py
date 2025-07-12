@@ -58,7 +58,7 @@ df_all = pd.concat([
 ], ignore_index=True).sample(frac=1, random_state=42).reset_index(drop=True)
 
 # 5) Fallback parcial: solo las primeras N con LLM
-N = 300
+N = 750
 hechos_cache = {}
 augmented = []
 

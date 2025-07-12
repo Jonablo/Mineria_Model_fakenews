@@ -9,8 +9,8 @@ from pyspark.sql import SparkSession
 # -------------------------------------------------------------------
 # 1. Ajustar permisos y crear directorios en el devcontainer (Linux)
 # -------------------------------------------------------------------
-WAREHOUSE_DIR = "./data/spark-warehouse"
-PARQUET_DIR   = "./data/noticias_rss_parquet"
+WAREHOUSE_DIR = "/workspaces/Mineria_Model_fakenews/data/spark-warehouse"
+PARQUET_DIR   = "/workspaces/Mineria_Model_fakenews/data/noticias_rss_parquet"
 TABLE_NAME    = "noticias_rss"
 
 for d in (WAREHOUSE_DIR, PARQUET_DIR):
