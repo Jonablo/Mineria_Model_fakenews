@@ -28,6 +28,8 @@ load_dotenv()
 # 1) Configuración de stopwords y OpenAI
 nltk.download("stopwords", quiet=True)
 SPANISH_STOPWORDS = stopwords.words("spanish")
+
+# openai API key cargado
 openai.api_key = os.getenv("OPENAI_API_KEY")
 if not openai.api_key:
     raise RuntimeError("Define OPENAI_API_KEY en tu .env")

@@ -141,9 +141,9 @@ def main():
     print(classification_report(y_te, y_pred, digits=4))
 
     # h) Guardar artefactos
-    joblib.dump(cal,         "svm_enhanced_calibrated.pkl")
-    joblib.dump(vectorizer,  "tfidf_enhanced_vectorizer.pkl")
-    joblib.dump(best_thr,    "best_thr.pkl")
+    joblib.dump(cal,         "svm_sin_oversample.pkl")
+    joblib.dump(vectorizer,  "tfidf_sin_oversample_vectorizer.pkl")
+    joblib.dump(best_thr,    "best_thr_sin_oversample.pkl")
     print("Modelos y umbral guardados.")
 
 if __name__ == "__main__":
