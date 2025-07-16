@@ -16,7 +16,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Instala pyspark y streamlit
+# Instala pyspark y streamlitsudo apt-get install -y docker.iosudo apt-get install -y docker.io
 RUN pip install --no-cache-dir pyspark streamlit
 
 # Copia el código de la app

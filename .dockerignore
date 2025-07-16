@@ -1,0 +1,36 @@
+# Ignore Python virtual environments
+.venv/
+__pycache__/
+*.pyc
+
+# Ignore logs
+*.log
+
+# Ignore temporary files
+*.tmp
+
+# Ignore data files
+*.csv
+*.parquet
+
+# Ignore artifacts
+artifacts/
+
+# Ignore frontend build files
+frontend/public/
+frontend/node_modules/
+ui/node_modules/
+
+# Ignore metastore database files
+metastore_db/
+
+# Ignore test files
+test_models/
+
+# Ignore Docker-related files
+Dockerfile
+
+# Ignore other unnecessary files
+*.pkl
+*.joblib
+*.png
