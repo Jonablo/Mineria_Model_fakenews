@@ -25,7 +25,7 @@ import time
 # Carga .env
 load_dotenv()
 
-# 1) Configuración de stopwords y OpenAI
+# 1) Configuración de stopwords
 nltk.download("stopwords", quiet=True)
 SPANISH_STOPWORDS = stopwords.words("spanish")
 
